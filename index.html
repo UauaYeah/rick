@@ -1,39 +1,47 @@
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Rickrolled</title>
 
-    <script type="text/javascript">
-        async function getTanshuku() {
-            const rawUrl = document.getElementById("url").value;
-            
-            const response = await fetch("http://tinyurl.com/api-create.php?url=https://" + String(rawUrl).replace("https://", "").replace("http://", ""));
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/ fb# website: http://ogp.me/ns/website"">
+    <meta charset=" UTF-8" />
+    <meta property="og:url" content="https://rickrollled.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="どこにでもあるURL短縮サイト（笑）" />
+    <meta property="og:site_name" content="Rickrolled" />
+    <meta content="url短縮 - （笑）" name="Rickrolled">    
 
-            if (response.status === 400) {
-                return document.getElementById("tanshukuEd").textContent = "失敗";
-            }
+<title>Rickrolled</title>
 
-            const shorted = await response.text();
+<script type="text/javascript">
+    async function getTanshuku() {
+        const rawUrl = document.getElementById("url").value;
 
-            document.getElementById("tanshukuEd").href = shorted;
-            document.getElementById("tanshukuEd").textContent = shorted;
-            document.getElementById("tanshukuEd").target = "_blank";
-            return document.getElementById("tanshukuEd").style = "display: block;";
+        const response = await fetch("http://tinyurl.com/api-create.php?url=https://" + String(rawUrl).replace("https://", "").replace("http://", ""));
+
+        if (response.status === 400) {
+            return document.getElementById("tanshukuEd").textContent = "失敗";
         }
-    </script>
-  </head>
 
-  <body>
+        const shorted = await response.text();
+
+        document.getElementById("tanshukuEd").href = shorted;
+        document.getElementById("tanshukuEd").textContent = shorted;
+        document.getElementById("tanshukuEd").target = "_blank";
+        return document.getElementById("tanshukuEd").style = "display: block;";
+    }
+</script>
+</head>
+
+<body>
     <div>
-      <center>
-        <p>URL短縮（笑）</p>
+        <center>
+            <p>URL短縮（笑）</p>
 
-        <p>短縮したいurlを入力</p>
-        <input type="url" id="url">
-        <input type="submit" id="tanshuku" onclick="getTanshuku()">
+            <p>短縮したいurlを入力</p>
+            <input type="url" id="url">
+            <input type="submit" id="tanshuku" onclick="getTanshuku()">
 
-        <a href="#" id="tanshukuEd" style="display: none;">This is ika286</a>
-      </center>
+            <a href="#" id="tanshukuEd" style="display: none;">This is ika286</a>
+        </center>
     </div>
-  </body>
+</body>
+
 </html>
