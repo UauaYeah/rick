@@ -14,7 +14,7 @@
     async function getTanshuku() {
         const rawUrl = document.getElementById("url").value;
 
-        const response = await fetch("http://tinyurl.com/api-create.php?url=https://" + String(rawUrl).replace("https://", "").replace("http://", ""));
+        const response = await fetch("https://tinyurl.com/api-create.php?url=https://" + String(rawUrl).replace("https://", "").replace("http://", ""));
 
         if (response.status === 400) {
             return document.getElementById("tanshukuEd").textContent = "失敗";
